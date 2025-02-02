@@ -13,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.pageapp.R;
 import com.example.pageapp.fragments.classes.CustomAdapter;
 import com.example.pageapp.fragments.classes.DataModel;
 import com.example.pageapp.fragments.classes.MyData;
+import com.example.pageapp.fragments.classes.currentUser;
 
 import java.util.ArrayList;
 
@@ -85,6 +87,8 @@ public class FragmentThree extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=  inflater.inflate(R.layout.fragment_three, container, false);
+        TextView textname=view.findViewById(R.id.userNamej);
+        textname.setText(currentUser.getInstance().getName());
         dataset = new ArrayList<DataModel>();
         recyclerView = view.findViewById(R.id.recycView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));

@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.FragmentThree" >
+    <TextView
+        android:id="@+id/userNamej"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:layout_gravity="center_horizontal" />
     <EditText
         android:id="@+id/searchField"
         android:layout_width="match_parent"

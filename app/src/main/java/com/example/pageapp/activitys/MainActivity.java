@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.Navigation;
 
 import com.example.pageapp.R;
+import com.example.pageapp.fragments.classes.currentUser;
 import com.example.pageapp.models.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
     public void addData(){
         String phone=((EditText) findViewById(R.id.etPhoneNumber)).getText().toString();
         String email=((EditText) findViewById(R.id.etEmail)).getText().toString();
+        String userName=((EditText) findViewById(R.id.etName)).getText().toString();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users").child(phone);
-        Student s =new Student(phone,email);
+        Student s =new Student(phone,email,userName);
         myRef.setValue(s);
     }
 
@@ -101,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 Student value = dataSnapshot.getValue(Student.class);
                 Toast.makeText(MainActivity.this,value.getEmail(),Toast.LENGTH_LONG).show();
+                currentUser user=currentUser.getInstance();
+                user.setName(value.getuserName());
+
             }
 
             @Override
